@@ -226,8 +226,10 @@ def verify_github_url():
             print(f"  OK ({code})")
         else:
             print(f"  WARNING: unexpected status {code}")
+            sys.exit(1)
     except Exception as e:
         print(f"  FAILED: {e}")
+        sys.exit(1)
 
 
 def main():
