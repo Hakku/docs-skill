@@ -1,0 +1,60 @@
+{
+  "skill_name": "docs",
+  "evals": [
+    {
+      "id": 0,
+      "type": "quality",
+      "prompt": "Paranna tämä README /docs -skillillä",
+      "files": ["evals/fixtures/sample-readme.md"],
+      "expected_output": "Silmäiltävyysparannuksia, koodilohkot koskematta",
+      "expectations": [
+        "Output sisältää osioiden uudelleenjärjestelyä tai otsikkoparannuksia",
+        "Koodilohkot ovat muuttumattomia",
+        "Humanizer-skill kutsuttiin tai käyttäjää ohjeistettiin ajamaan se"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "quality",
+      "prompt": "Aja /docs CLAUDE.md:lle",
+      "files": [],
+      "expected_output": "Kieltäytyy: CC:n sisäinen konfiguraatio",
+      "expectations": [
+        "Skill kieltäytyy käsittelemästä tiedostoa",
+        "Vastaus mainitsee CC:n sisäisen konfiguraation tai vastaavan syyn"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "quality",
+      "prompt": "Paranna tämä dokumentti",
+      "files": ["evals/fixtures/code-prose-mix.md"],
+      "expected_output": "Koodilohkot byte-identtiset, proosa parannettu",
+      "expectations": [
+        "Koodilohkot säilyvät muuttumattomina (programmatic-candidate)",
+        "Proosaosuudet ovat parantuneet silmäiltävyydeltään",
+        "Taulukkorakenteet ovat ehjät"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "trigger",
+      "prompt": "Tee tästä README:stä parempi",
+      "files": [],
+      "expected_output": "Docs-skill triggeröityy",
+      "expectations": [
+        "Docs-skill aktivoituu promptista (positiivinen trigger)"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "trigger",
+      "prompt": "Tarkista tämän Python-koodin bugit",
+      "files": [],
+      "expected_output": "Docs-skill EI triggeröidy",
+      "expectations": [
+        "Docs-skill EI aktivoidu promptista (negatiivinen trigger)"
+      ]
+    }
+  ]
+}
